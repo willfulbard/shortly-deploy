@@ -32,7 +32,8 @@ module.exports = function(grunt) {
 
     nodemon: {
       dev: {
-        script: 'server.js'
+        script: 'server.js',
+        ignore: ['results.txt', 'public/dist/*']
       }
     },
 
@@ -119,16 +120,8 @@ module.exports = function(grunt) {
   // Main grunt tasks
   ////////////////////////////////////////////////////
 
-  grunt.registerTask('test', [
-    'mochaTest'
-  ]);
-
   grunt.registerTask('lint', [
     'eslint'
-  ]);
-
-  grunt.registerTask('gitpush', [
-    'shell:prodServer'
   ]);
 
   // grunt.registerTask('gitpush', 'shell:prodServer');
@@ -146,7 +139,7 @@ module.exports = function(grunt) {
   });
 
   grunt.registerTask('deploy', [
-    grunt.task.run(['test', 'lint', 'build', 'shell:prodServer'])
+    grunt.task.run(['mochaTest', 'lint', 'build', 'shell:prodServer'])
   ]);
 
 
