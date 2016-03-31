@@ -3,6 +3,7 @@
 .LSOverride
 iisnode.yml
 npm-debug.log
+results.txt
 
 db/shortly.sqlite
 node_modules
@@ -19,3 +20,4 @@ Icon
 .floobit
 .floo
 .flooignore
+
