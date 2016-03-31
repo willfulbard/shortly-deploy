@@ -127,20 +127,26 @@ module.exports = function(grunt) {
     'eslint'
   ]);
 
+  grunt.registerTask('gitpush', [
+    'shell:prodServer'
+  ]);
+
+  // grunt.registerTask('gitpush', 'shell:prodServer');
+
   grunt.registerTask('build', [
     'concat', 'cssmin',  'uglify'
   ]);
 
   grunt.registerTask('upload', function(n) {
     if (grunt.option('prod')) {
-      grunt.task.run(['shell:prodServer']);
+      // grunt.task.run(['shell:prodServer']);
     } else {
       grunt.task.run([ 'server-dev' ]);
     }
   });
 
   grunt.registerTask('deploy', [
-    grunt.task.run(['test', 'lint', 'build', 'upload']);
+    grunt.task.run(['test', 'lint', 'build', 'shell:prodServer'])
   ]);
 
 
